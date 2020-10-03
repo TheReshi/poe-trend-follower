@@ -36,7 +36,7 @@ def get_rows(data_source, col_count):
     for row in table_rows:
         cells = row.find_all('td')
         name = cells[0].find_all('div')[0].find_all('div')[0].text.split(',')[0]
-        change = cells[col_count - 3].text
+#        change = cells[col_count - 3].text
         if cells[col_count - 2].text.count('×') > 1:
             price_ex = cells[col_count - 2].text.split('×')[0]
             price_chaos = cells[col_count - 2].text.split('×')[1]
@@ -44,7 +44,7 @@ def get_rows(data_source, col_count):
             price_ex = 'None'
             price_chaos = cells[col_count - 2].text.split('×')[0]
 
-        all_rows.append([name, change, price_ex, price_chaos])
+        all_rows.append([name, price_ex, price_chaos])
 
     return all_rows
 

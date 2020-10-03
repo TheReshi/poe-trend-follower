@@ -4,8 +4,6 @@ import time
 
 urls = res.read_file('categories')
 
-print(datetime.now().strftime('%Y-%m-%d_%H-%M'))
-
 while True:
     if int(datetime.now().strftime('%M')) % 10 == 0:
         file = open('data/' + datetime.now().strftime('%Y-%m-%d_%H-%M'), 'w+')
@@ -17,10 +15,11 @@ while True:
             for row in row_data:
                 new_item = ""
                 for item in row:
-                    new_item += item + '\t'
+                    new_item += item + ';'
                 file.write(new_item[:-1] + '\n')
 
         file.close()
+        print("Writing done: " + datetime.now().strftime('%Y-%m-%d_%H-%M'))
     time.sleep(61)
 
 res.close_browser()
